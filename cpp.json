@@ -310,4 +310,42 @@
 		],
 		"description": "sieveoferatosthenes"
 	},
+	"string to int": {
+		"prefix": "strtoint",
+		"body": [
+			"",
+			"typedef long long int ll;",
+			"ll strtoint(const string &str)",
+			"{",
+			"    ll result = 0;",
+			"    int sign = 1;",
+			"    size_t i = 0;",
+			"",
+			"    if (!str.empty() && (str[0] == '-' || str[0] == '+'))",
+			"    {",
+			"        sign = (str[0] == '-') ? -1 : 1;",
+			"        i = 1; ",
+			"    }",
+			"",
+			"    for (; i < str.size(); ++i)",
+			"    {",
+			"        char c = str[i];",
+			"        if (isdigit(c))",
+			"        {",
+			"            result = result * 10 + (c - '0');",
+			"            if (result > INT_MAX)",
+			"            {",
+			"                return (sign == 1) ? INT_MAX : INT_MIN; // Handle overflow/underflow",
+			"            }",
+			"        }",
+			"        else",
+			"        {",
+			"            throw invalid_argument(\"Invalid character in string: \" + string(1, c));",
+			"        }",
+			"    }",
+			"    return result * sign;",
+			"}"
+		],
+		"description": "string to int"
+	}
 }
